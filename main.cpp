@@ -26,8 +26,8 @@ int main() {
     std::cout << nw.addUser("luigi", "Luigi") << std::endl;     // true (1)
 
     std::cout << nw.addUser("mario", "Mario2") << std::endl;  // false (0) b/c there are other users in the network w/ the usrn "mario"
-    std::cout << nw.addUser("mario", "Mario3") << std::endl;  // false (0) b/c there are other users in the network w/ the usrn "mario"
-    std::cout << nw.addUser("mario", "Mario4") << std::endl;  // false (0) b/c there are other users in the network w/ the usrn "mario"
+    std::cout << nw.addUser("mario 2", "Mario2") << std::endl;  // false (0) b/c the username contains a space
+    std::cout << nw.addUser("mario-2", "Mario2") << std::endl;  // false (0) b/c the username contains a non-alphanumeric character
 
     // for(int i = 2; i < 20; i++)
     //     std::cout << nw.addUser("mario" + std::to_string(i), 

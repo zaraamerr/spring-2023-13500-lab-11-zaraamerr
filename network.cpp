@@ -27,6 +27,7 @@
 
 #include <iostream>
 #include <string>
+#include <cctype>
 #include "network.h"
 #include "profile.h"
 
@@ -51,14 +52,32 @@ int Network::findID(std::string usrn) {
   return -1;
 }
 
-bool Network::addUser(std::string usrn, std::string dspn) {
-  if (numUsers < MAX_USERS && findID(usrn) == -1 && usrn != "") {
-    Profile p(usrn, dspn);
-    profiles[numUsers] = p;
+// bool Network::addUser(std::string usrn, std::string dspn) {
+//   if (numUsers < MAX_USERS && findID(usrn) == -1 && isalnum(usrn)) {
+//     Profile p(usrn, dspn);
+//     profiles[numUsers] = p;
+//     numUsers++;
+//     return true;
+//   }
+//   return false;
+// }
+
+bool Network::addUser(std::string usrn, std::string dspn){ // this will add new users into the data
+    if (numUsers == MAX_USERS){ 
+        return false;
+    }
+    for (int i = 0; i < usrn.size(); i++){ // will give the size
+        if (!isalnum(usrn[i])){ 
+            return false;
+        }
+    }
+    if (findID(usrn) != -1) {
+        return false;
+    }
+
+    profiles[numUsers] = Profile(usrn, dspn);
     numUsers++;
     return true;
-  }
-  return false;
 }
 
 //Task C: follow(usrn1, usrn2) simply marks the corresponding cell in the
