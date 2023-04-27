@@ -33,7 +33,7 @@ int main() {
     //     std::cout << nw.addUser("mario" + std::to_string(i), 
     //              "Mario" + std::to_string(i)) << std::endl;   // true (1)
 
-    std::cout << nw.addUser("yoshi", "Yoshi") << std::endl;   // false (0) b/c max users have been reached and the array is full
+    std::cout << nw.addUser("yoshi", "Yoshi") << std::endl;
     // make them follow each other
     nw.follow("mario", "luigi");
     nw.follow("mario", "yoshi");
