@@ -30,9 +30,16 @@
 #include "network.h"
 #include "profile.h"
 
-
+//Task C:
+//The constructor Network() should be modified, setting all 
+//elements of the matrix following to false, so in empty network no one is following anyone.
 Network::Network() {
   numUsers = 0;
+  for (int i = 0; i < MAX_USERS; i++) {
+    for (int j = 0; j < MAX_USERS; j++) {
+      following[i][j] = false;
+    }
+  }
 }
 
 int Network::findID(std::string usrn) {
@@ -52,6 +59,40 @@ bool Network::addUser(std::string usrn, std::string dspn) {
     return true;
   }
   return false;
+}
+
+//Task C: follow(usrn1, usrn2) simply marks the corresponding cell in the
+//friendship matrix if both usernames are found. It returns true or false, depending on whether
+//the operation was successful or not. Make 'usrn1' follow 'usrn2' (if both usernames are in the network).
+//return true if success (if both usernames exist), otherwise return false
+
+bool Network::follow(std::string usrn1, std::string usrn2) {
+  int id1 = findID(usrn1);
+  int id2 = findID(usrn2);
+  if (id1 != -1 && id2 != -1) {
+    following[id1][id2] = true;
+    return true;
+  }
+  return false;
+}
+
+// Print Dot file (graphical representation of the network)
+void Network::printDot(){
+    std::cout << "digraph {" << std::endl;
+    for(int i = 0; i < MAX_USERS; i++){
+        if(findID(profiles[i].getUsername()) != -1){
+            std::cout << "    \"@" << profiles[i].getUsername() << "\"" << std::endl;
+        }
+    }
+    std::cout << std::endl;
+    for(int i = 0; i < MAX_USERS-1; i++){
+        for(int j = 0; j < MAX_USERS-1; j++){
+            if(following[i][j] == true){
+                std::cout << "\"@" << profiles[i].getUsername() << "\"" << " -> " << "\"@" << profiles[j].getUsername() << "\"" << std::endl;
+            }
+        }
+    }
+    std::cout << "}" << std::endl;
 }
 
 
