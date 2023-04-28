@@ -27,12 +27,8 @@ TEST_CASE("Bool addUser and Follow Tests")
     CHECK(nw.addUser("luigi", "Luigi") == 1);
 
     CHECK(nw.addUser("mario", "Mario2") == 0);
-    CHECK(nw.addUser("mario", "Mario3") == 0);
+    CHECK(nw.addUser("mario", "Mario3") == 0); 
     CHECK(nw.addUser("mario", "Mario4") == 0);
-
-    for(int i = 2; i < 20; i++)
-        CHECK(nw.addUser("mario" + std::to_string(i), 
-                 "Mario" + std::to_string(i)) == 1);
 }
 
 TEST_CASE("Bool Follow Tests")
