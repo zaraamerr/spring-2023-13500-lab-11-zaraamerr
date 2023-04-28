@@ -52,16 +52,6 @@ int Network::findID(std::string usrn) {
   return -1;
 }
 
-// bool Network::addUser(std::string usrn, std::string dspn) {
-//   if (numUsers < MAX_USERS && findID(usrn) == -1 && isalnum(usrn)) {
-//     Profile p(usrn, dspn);
-//     profiles[numUsers] = p;
-//     numUsers++;
-//     return true;
-//   }
-//   return false;
-// }
-
 bool Network::addUser(std::string usrn, std::string dspn){ // this will add new users into the data
     if (numUsers == MAX_USERS){ 
         return false;

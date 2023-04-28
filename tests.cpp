@@ -33,24 +33,24 @@ TEST_CASE("Bool addUser and Follow Tests")
 
 TEST_CASE("Bool Follow Tests")
 {
-    Network nw;
-    nw.addUser("mario", "Mario");
-    nw.addUser("luigi", "Luigi");
-    nw.addUser("yoshi", "Yoshi");
+    Network nw2;
+    nw2.addUser("mario", "Mario");
+    nw2.addUser("luigi", "Luigi");
+    nw2.addUser("yoshi", "Yoshi");
 
-    nw.follow("mario", "luigi");
-    nw.follow("mario", "yoshi");
-    nw.follow("luigi", "mario");
-    nw.follow("luigi", "yoshi");
-    nw.follow("yoshi", "mario");
-    nw.follow("yoshi", "luigi");
+    nw2.follow("mario", "luigi");
+    nw2.follow("mario", "yoshi");
+    nw2.follow("luigi", "mario");
+    nw2.follow("luigi", "yoshi");
+    nw2.follow("yoshi", "mario");
+    nw2.follow("yoshi", "luigi");
 
-    CHECK(nw.follow("mario", "luigi") == 1);
-    CHECK(nw.follow("mario", "yoshi") == 1);
-    CHECK(nw.follow("luigi", "mario") == 1);
-    CHECK(nw.follow("luigi", "yoshi") == 1);
-    CHECK(nw.follow("yoshi", "mario") == 1);
-    CHECK(nw.follow("yoshi", "luigi") == 1);
+    CHECK(nw2.follow("mario", "luigi") == 1);
+    CHECK(nw2.follow("mario", "yoshi") == 1);
+    CHECK(nw2.follow("luigi", "mario") == 1);
+    CHECK(nw2.follow("luigi", "yoshi") == 1);
+    CHECK(nw2.follow("yoshi", "mario") == 1);
+    CHECK(nw2.follow("yoshi", "luigi") == 1);
 }
 
 
